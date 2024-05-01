@@ -12,7 +12,7 @@ const server = createServer(app);
 const io = new Server(server, {
   connectionStateRecovery: {},
   cors: {
-      origin: "http://localhost:9000"
+      origin: "https://chat-front-gk8r.onrender.com"
     }
   
 } );
