@@ -13,7 +13,7 @@ const port = process.env.PORT || 3000
 const io = new Server(server, {
   connectionStateRecovery: {},
   cors: {
-      origin: "http://localhost:9000"
+      origin: "*"
     }
   
 } );

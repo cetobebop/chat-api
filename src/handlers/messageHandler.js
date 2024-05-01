@@ -1,11 +1,11 @@
 import { createChatRoom } from "../utils/createChatRoom.js"
-import { chatAlreadyExists } from "../utils/chatAlreadyExists.js"
+// import { chatAlreadyExists } from "../utils/chatAlreadyExists.js"
 import { createMessage } from "../utils/createMessage.js"
 import { removeNanoId } from "../utils/removeNanoId.js"
 
 export async function messageHandler(data, socket, io, sender, receiver, callback) {
     let chat
-    chat = await chatAlreadyExists(data)
+    // chat = await chatAlreadyExists(data)
     
     
     if(chat) {
