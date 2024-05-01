@@ -1,5 +1,5 @@
 import { createChatRoom } from "../utils/createChatRoom.js"
-import { chatAlreadyExists } from "../utils/chatAlreadyExists.js"
+import { chatAlreadyExists } from "../utils/chatExist.js"
 import { createMessage } from "../utils/createMessage.js"
 import { removeNanoId } from "../utils/removeNanoId.js"
 
