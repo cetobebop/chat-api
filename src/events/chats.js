@@ -1,7 +1,9 @@
 import { findUser } from "../utils/findUser.js"
 import { validate } from "../utils/validate.js"
 
-export function chats(socket, io, userSession) {
+export async function chats(socket, io, userSession) {
+
+    
    
     socket.on("client:join-new-chat", async (chatId, callback = ()=>{})=>{
         const errors = validate(chatId,"chatId",{required:true, isId:true})
@@ -12,6 +14,7 @@ export function chats(socket, io, userSession) {
         })
 
         const user = await findUser(userSession.nanoId)
+        
         const isMyChat = user.chatGroups.find(id => id.toString() === chatId)
         if(!isMyChat) return 
         
@@ -22,5 +25,6 @@ export function chats(socket, io, userSession) {
         })
     })
 
+  
 
 }

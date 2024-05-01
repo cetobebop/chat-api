@@ -13,11 +13,6 @@ const chatSchema = new Schema({
         type: Array,
         default: []
     },
-    msg:[{
-        type: Schema.Types.ObjectId,
-        ref: "Messages",
-        default: []
-    }],
     activeSessions:{
         type: Array,
         default: []

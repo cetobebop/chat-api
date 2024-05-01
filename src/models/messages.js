@@ -16,14 +16,14 @@ const msgSchema = new Schema({
     content:{
         type: String
     },
-    read:{
-        type: Boolean,
-        default: false
+    status:{
+        type: String,
+        default: "sent"
     },
-    received:{
-        type: Boolean,
-        default: false
-    },
+    chatId:{
+        type: Schema.Types.ObjectId,
+        default: "Chats"
+    }
     
 },{
     timestamps: true

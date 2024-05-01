@@ -1,7 +1,7 @@
 import User from "../models/user.js";
 import Chats from "../models/chats.js";
 
-export async function chatAlreadyExists(data, newMessage) {
+export async function chatAlreadyExists(data) {
     const {sender, receiver} = data
     let chats
     
@@ -17,8 +17,6 @@ export async function chatAlreadyExists(data, newMessage) {
         if(!chats) return false
         
         const chatFound = await Chats.findById(chats._id)
-        chatFound?.msg?.push(newMessage)
-        await chatFound.save()
 
         return chatFound
 

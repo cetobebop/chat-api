@@ -1,9 +1,9 @@
 import Chat from "../models/chats.js";
 
-export async function createChatRoom(sender, receiver, newMsg) {
+export async function createChatRoom(sender, receiver) {
    
 
-    const newChat = await Chat({users:[sender._id, receiver._id], msg: [newMsg._id]}).save()
+    const newChat = await Chat({users:[sender._id, receiver._id]}).save()
 
     if(sender._id.toString() !== receiver._id.toString()){
         sender.chatGroups.push(newChat._id)
