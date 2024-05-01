@@ -8,6 +8,7 @@ import events from './events/index.js';
 import router from './routes/user.js';
 
 const server = createServer(app);
+const port = process.env.PORT || 3000
 
 const io = new Server(server, {
   connectionStateRecovery: {},
@@ -21,6 +22,6 @@ connectDb()
 events(io)
 app.use(router)
 
-server.listen(process.env.PORT || 3000, () => {
+server.listen(port, () => {
   console.log('server running at http://localhost:3000');
 });
