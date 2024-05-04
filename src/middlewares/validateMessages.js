@@ -8,7 +8,7 @@ export function validateMessages(data) {
         .push(
             validate(sender, "sender", {type: "string", required: true}),
             validate(receiver, "receiver", {type: "string", required: true, isId: true}),
-            validate(msg, "msg", {type: "string", required: true})
+            validate(msg, "msg", {type: "string", required: true, max:700, min: 1})
         )
 
     return error.filter(e => e !== undefined)
