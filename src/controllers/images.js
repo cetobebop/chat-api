@@ -17,7 +17,7 @@ class ImagesControllers {
       const {sender, receiver} = req.body
       const {file} = req
 
-      const msg = `http://localhost:3000/public/${file.filename}`
+      const msg = `https://chat-front-gk8r.onrender.com/${file.filename}`
 
       const errors = validateMessages({sender, receiver, msg})
       
