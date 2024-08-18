@@ -23,6 +23,10 @@ const msgSchema = new Schema({
     chatId:{
         type: Schema.Types.ObjectId,
         default: "Chats"
+    },
+    isAMultimediaFile:{
+        type: Boolean,
+        default: false
     }
     
 },{

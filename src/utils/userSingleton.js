@@ -13,7 +13,7 @@ export default async function (userNanoId) {
   }
 
   const nano = nanoid()
-  const username = nanoid(7)
+  const username = nanoid(4)
 
   const user = await new User({
     username,

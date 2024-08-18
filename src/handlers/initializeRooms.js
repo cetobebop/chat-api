@@ -3,7 +3,6 @@ import {countUnreadMessages} from "../utils/unreadMessages.js"
 
 export async function initializeRooms(socket, user) {
 
-    
     const indexedMessageChat = await firstMessageChat(user.chatGroups)
 
     const unreadMessagesPerChat = await countUnreadMessages(user.chatGroups, user._id)
@@ -28,6 +27,6 @@ export async function initializeRooms(socket, user) {
     rooms.forEach(room => {
         socket.join("room:" + room._id.toString())
     });
-
+    // console.log("rooms activadas: " , rooms.map(room => "room:" + room._id.toString()))
     socket.emit("server:my-rooms", rooms, indexedMessageChat, unreadMessagesPerChat)
 }

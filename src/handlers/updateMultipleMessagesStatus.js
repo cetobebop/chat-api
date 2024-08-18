@@ -10,7 +10,7 @@ export async function updateMultipleMessagesStatus(chatsIds, user, socket, newSt
     );
     
     chatsIds.forEach(chatId => {
-      socket.to(`room:${chatId}`).emit(`server:messages-${newStatus}`, chatId)
+      socket.to(`room:${chatId.toString()}`).emit(`server:messages-${newStatus}`, chatId)
     });
 
   } catch (error) {

@@ -12,7 +12,7 @@ export function messages(socket, io, userSession) {
     socket.on("client:sent-message", async (data = {}, callback= ()=>{})=>{
 
         const error = validateMessages(data)
-        console.log(error)
+        
         if(error.length) return callback({status: false})
     
         const receiver = await findUser(undefined, data.receiver)
@@ -28,7 +28,7 @@ export function messages(socket, io, userSession) {
 
     socket.on("client:messages-received", (chatsIds = {})=>{
         const errors = validateArray(chatsIds, {type: "string"})
-        console.log(errors, " array errors")
+       
         if(errors.length) return
 
         updateMultipleMessagesStatus(chatsIds, userSession, socket, "received")
