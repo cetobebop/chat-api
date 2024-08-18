@@ -12,7 +12,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:9000',
+    origin: '*',
     optionsSuccessStatus: 200 
 }))
 
