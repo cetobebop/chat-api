@@ -2,6 +2,7 @@ import { uploadSingleImage } from "../middlewares/imagesUploads.js";
 import { emitterImageControllerToSocket } from "../global/eventEmitter.js";
 import { validateMessages } from "../middlewares/validateMessages.js";
 import { findUser } from "../utils/findUser.js";
+import { uploadImage } from "../utils/uploadImage.js";
 
 class ImagesControllers {
   setImage(req, res) {
@@ -18,6 +19,12 @@ class ImagesControllers {
       const {file} = req
 
       const msg = `https://chat-front-gk8r.onrender.com/${file.filename}`
+
+      //  const msg = `http://localhost:3000/public/${file.filename}`
+
+       console.log(msg)
+
+      uploadImage(msg)
 
       const errors = validateMessages({sender, receiver, msg})
       
