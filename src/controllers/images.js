@@ -18,9 +18,9 @@ class ImagesControllers {
       const {sender, receiver} = req.body
       const {file} = req
 
-      const msg = `https://chat-front-gk8r.onrender.com/${file.filename}`
+      // const msg = `https://chat-front-gk8r.onrender.com/${file.filename}`
 
-      //  const msg = `http://localhost:3000/public/${file.filename}`
+      const msg = `https://chat-api-z7uu.onrender.com/public/${file.filename}`
 
        console.log(msg)
 
