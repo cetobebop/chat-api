@@ -5,7 +5,7 @@ import app from './app.js';
 import { connectDb } from './db.js';
 import events from './events/index.js';
 import { main } from './init/bot.js';
-
+import {cronjob} from "./utils/cronjob.js";
 
 
 const server = createServer(app);
@@ -24,6 +24,7 @@ const io = new Server(server, {
 connectDb()
 events(io)
 
+// cronjob()
 
 main()
 

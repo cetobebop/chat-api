@@ -24,9 +24,9 @@ class ImagesControllers {
 
        console.log(msg)
 
-      uploadImage(msg)
+      const url = await uploadImage(msg)
 
-      const errors = validateMessages({sender, receiver, msg})
+      const errors = validateMessages({sender, receiver, msg: url.secure_url})
       
       if(errors.length) return res.status(400).json({
         status: "error",

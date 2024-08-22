@@ -1,14 +1,15 @@
 import { cloudinaryInstance } from "../global/cloudinaryInstance.js";
 
-export function uploadImage (imagePath){
-    cloudinaryInstance.uploader.upload(imagePath).then(result=>{  
-        console.log(result)
-
-        return result
-     
-    }).catch(function (err) {
-        
-        if (err) { console.warn(err); }
-      });
+export async function uploadImage(imagePath) {
+  try {
+    const result = await cloudinaryInstance.uploader.upload(imagePath);
     
+    console.log(result);
+
+    return result;
+  } catch (err) {
+    if (err) {
+      console.warn(err);
+    }
+  }
 }
