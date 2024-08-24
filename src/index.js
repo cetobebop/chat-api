@@ -24,7 +24,7 @@ const io = new Server(server, {
 connectDb()
 events(io)
 
-// cronjob()
+cronjob()
 
 main()
 
