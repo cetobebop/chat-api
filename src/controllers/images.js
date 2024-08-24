@@ -1,3 +1,5 @@
+import moment from "moment-round";
+
 import { uploadSingleImage } from "../middlewares/imagesUploads.js";
 import { emitterImageControllerToSocket } from "../global/eventEmitter.js";
 import { validateMessages } from "../middlewares/validateMessages.js";
@@ -18,11 +20,7 @@ class ImagesControllers {
       const {sender, receiver} = req.body
       const {file} = req
 
-      // const msg = `https://chat-front-gk8r.onrender.com/${file.filename}`
-
       const msg = `https://chat-api-z7uu.onrender.com/public/${file.filename}`
-
-       console.log(msg)
 
       const url = await uploadImage(msg)
 
@@ -42,7 +40,6 @@ class ImagesControllers {
       })
 
       emitterImageControllerToSocket.emit("server-event-emitter:client-sent-image" + sender, {sender, receiver, msg, isAMultimediaFile : true}, receiverUser)
-    
       
       return res.json({ status: "success" });
     });
