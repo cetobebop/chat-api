@@ -20,11 +20,11 @@ class ImagesControllers {
       const {sender, receiver} = req.body
       const {file} = req
 
-      const msg = `https://chat-api-z7uu.onrender.com/public/${file.filename}`
+      const urlServer = `https://chat-api-z7uu.onrender.com/public/${file.filename}`
 
-      const url = await uploadImage(msg)
+      const msg = await uploadImage(urlServer)
 
-      const errors = validateMessages({sender, receiver, msg: url.secure_url})
+      const errors = validateMessages({sender, receiver, msg: msg.secure_url})
       
       if(errors.length) return res.status(400).json({
         status: "error",
@@ -39,7 +39,7 @@ class ImagesControllers {
         msg: "receiver not found"
       })
 
-      emitterImageControllerToSocket.emit("server-event-emitter:client-sent-image" + sender, {sender, receiver, msg, isAMultimediaFile : true}, receiverUser)
+      emitterImageControllerToSocket.emit("server-event-emitter:client-sent-image" + sender, {sender, receiver, msg: msg.secure_url, isAMultimediaFile : true}, receiverUser)
       
       return res.json({ status: "success" });
     });
