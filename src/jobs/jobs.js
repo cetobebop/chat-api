@@ -1,4 +1,4 @@
-import { deleteCloudinaryImages, deleteCloudinaryImagesTime } from "./deleteCloudinaryImages"
+import { deleteCloudinaryImages, deleteCloudinaryImagesTime } from "./deleteCloudinaryImages.js"
 
 export default [{
     task: ()=>{console.log("hola")},
