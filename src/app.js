@@ -12,7 +12,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 
 app.use(cors({
-    origin: '*',
+    origin: 'https://chat-front-gk8r.onrender.com',
     optionsSuccessStatus: 200 
 }))
 
