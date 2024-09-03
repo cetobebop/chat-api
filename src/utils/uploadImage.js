@@ -2,7 +2,7 @@ import moment from "moment-round";
 
 import { cloudinaryInstance } from "../global/cloudinaryInstance.js";
 
-export async function uploadImage(tag) {
+export async function uploadImage(imagePath) {
   try {
 
     const tag = moment().floor(12, "hours").format();
