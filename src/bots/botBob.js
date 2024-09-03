@@ -1,6 +1,6 @@
 
 const randomPhrases = [
-    "Espero que lo que haya dicho sea educado; de todas formas no sé lo que dijiste.",
+    "Espero que lo que hayas dicho sea educado; de todas formas no sé lo que dijiste.",
     "Smoke some, drink some, pop one",
     "Prefiero agridulce.",
     "No estoy preparado para esa responsabilidad.",

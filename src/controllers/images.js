@@ -10,41 +10,50 @@ class ImagesControllers {
   setImage(req, res) {
     uploadSingleImage(req, res, async function (err) {
       if (err) {
-        
         return res.status(400).json({
           status: "error",
           msg: err.message,
         });
       }
-      
-      const {sender, receiver} = req.body
-      const {file} = req
 
-      const urlServer = `https://chat-api-z7uu.onrender.com/public/${file.filename}`
+      const { sender, receiver } = req.body;
+      const { file } = req;
 
-      const msg = await uploadImage(urlServer)
+      const msg = {
+        secure_url: `http://localhost:3000/public/${file.filename}`,
+      };
 
-      const errors = validateMessages({sender, receiver, msg: msg.secure_url})
-      
-      if(errors.length) return res.status(400).json({
-        status: "error",
-        msg: "invalid parameters"
-      })
+      // const urlServer = `https://chat-api-z7uu.onrender.com/public/${file.filename}`
+      // const msg = await uploadImage(urlServer)
 
+      const errors = validateMessages({
+        sender,
+        receiver,
+        msg: msg.secure_url,
+      });
 
-      const receiverUser = await findUser(undefined, receiver)
+      if (errors.length)
+        return res.status(400).json({
+          status: "error",
+          msg: "invalid parameters",
+        });
 
-      if(!receiverUser) return res.status(404).json({
-        status: "error",
-        msg: "receiver not found"
-      })
+      const receiverUser = await findUser(undefined, receiver);
 
-      emitterImageControllerToSocket.emit("server-event-emitter:client-sent-image" + sender, {sender, receiver, msg: msg.secure_url, isAMultimediaFile : true}, receiverUser)
-      
+      if (!receiverUser)
+        return res.status(404).json({
+          status: "error",
+          msg: "receiver not found",
+        });
+
+      emitterImageControllerToSocket.emit(
+        "server-event-emitter:client-sent-image" + sender,
+        { sender, receiver, msg: msg.secure_url, isAMultimediaFile: true },
+        receiverUser
+      );
+
       return res.json({ status: "success" });
     });
-
-
   }
 }
 
