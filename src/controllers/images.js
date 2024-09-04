@@ -19,12 +19,12 @@ class ImagesControllers {
       const { sender, receiver } = req.body;
       const { file } = req;
 
-      const msg = {
-        secure_url: `http://localhost:3000/public/${file.filename}`,
-      };
+      // const msg = {
+      //   secure_url: `http://localhost:3000/public/${file.filename}`,
+      // };
 
-      // const urlServer = `https://chat-api-z7uu.onrender.com/public/${file.filename}`
-      // const msg = await uploadImage(urlServer)
+      const urlServer = `https://chat-api-z7uu.onrender.com/public/${file.filename}`
+      const msg = await uploadImage(urlServer)
 
       const errors = validateMessages({
         sender,
