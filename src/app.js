@@ -11,7 +11,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 
-var whitelist = ['https://chat-front-gk8r.onrender.com/', "https://chat-front-gk8r.onrender.com", "http://localhost:9000"]
+var whitelist = ['https://chat-front-gk8r.onrender.com/', "https://chat-front-gk8r.onrender.com", "http://localhost:9000", undefined]
 
 app.use(cors({
     origin: function (origin, callback) {
