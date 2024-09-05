@@ -1,4 +1,5 @@
 import { deleteCloudinaryImages, deleteCloudinaryImagesTime } from "./deleteCloudinaryImages.js"
+import { reloadWebsite, reloadWebsiteTime } from "./requestToMyServer.js"
 
 export default [{
     task: ()=>{console.log("hola")},
@@ -8,5 +9,8 @@ export default [{
     task: deleteCloudinaryImages,
     time: deleteCloudinaryImagesTime
 },
-
+{
+    task: reloadWebsite,
+    time: reloadWebsiteTime
+},
 ]

@@ -33,6 +33,10 @@ app.use(express.json())
 app.use("/public", express.static(path.join(__dirname, "uploads" )))
  
  
+app.get("/", (req, res)=>{
+  res.json({msg: "vivo!!!"})
+})
+
 app.use("/images", router.imagesRouter)
 
 export default app;

@@ -1,10 +1,13 @@
 import moment from "moment-round";
+import { config } from "dotenv";
 
 import { uploadSingleImage } from "../middlewares/imagesUploads.js";
 import { emitterImageControllerToSocket } from "../global/eventEmitter.js";
 import { validateMessages } from "../middlewares/validateMessages.js";
 import { findUser } from "../utils/findUser.js";
 import { uploadImage } from "../utils/uploadImage.js";
+
+config();
 
 class ImagesControllers {
   setImage(req, res) {
@@ -19,12 +22,13 @@ class ImagesControllers {
       const { sender, receiver } = req.body;
       const { file } = req;
 
-      // const msg = {
-      //   secure_url: `http://localhost:3000/public/${file.filename}`,
-      // };
+      const urlServer = process.env.MY_SERVER_URL + `/public/${file.filename}`;
 
-      const urlServer = `https://chat-api-z7uu.onrender.com/public/${file.filename}`
-      const msg = await uploadImage(urlServer)
+      const msg = !process.env.PROD
+        ? {
+            secure_url: urlServer,
+          }
+        : await uploadImage(urlServer);
 
       const errors = validateMessages({
         sender,
