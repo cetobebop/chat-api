@@ -1,4 +1,6 @@
 
+
+
 const randomPhrases = [
     "Espero que lo que hayas dicho sea educado; de todas formas no sé lo que dijiste.",
     "Smoke some, drink some, pop one",
@@ -40,6 +42,7 @@ const randomPhrases = [
 
 
 export default function (data){
+
    return  randomPhrases[Math.floor(Math.random() * randomPhrases.length)]
 
    

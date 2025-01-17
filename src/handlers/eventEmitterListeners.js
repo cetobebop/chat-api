@@ -11,7 +11,7 @@ export function eventEmitterListeners(io, socket, userSession) {
 
 
     socket.on("disconnect", ()=>{
-        console.log("desconectado")
+       
         emitterImageControllerToSocket.removeListener("server-event-emitter:client-sent-image" + userSession.nanoId, imageUrlByMessage)
     })
 }

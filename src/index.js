@@ -7,6 +7,11 @@ import events from './events/index.js';
 import { main } from './init/bot.js';
 import {cronjob} from "./utils/cronjob.js";
 
+import user from './models/user.js';
+
+// user.deleteMany({nanoId: {$in: ["qk8N4Twl3n5gBuAii2i-J","qk8N4Twl3n5gBuAii2i-Q"]}}).then(res=>{
+//   console.log(res)
+// })
 
 const server = createServer(app);
 const port = process.env.PORT || 3000

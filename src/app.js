@@ -15,14 +15,14 @@ var whitelist = ['https://chat-front-gk8r.onrender.com/', "https://chat-front-gk
 
 app.use(cors({
     origin: function (origin, callback) {
-        console.log("origin: " , origin)
-        console.log(whitelist.indexOf(origin) !== -1, " resolucion de cors")
+        // console.log("origin: " , origin)
+        // console.log(whitelist.indexOf(origin) !== -1, " resolucion de cors")
 
         if (whitelist.indexOf(origin) !== -1) {
           callback(null, true)
-          console.log("valido")
+          // console.log("valido")
         } else {
-            console.log("invalido")
+            // console.log("invalido")
           callback(new Error('Not allowed by CORS'))
         }
       },

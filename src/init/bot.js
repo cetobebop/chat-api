@@ -4,17 +4,21 @@ import { sessionInstance } from "../global/sessionInstance.js";
 
 async function createBots() {
   const botUserInstances = botInitialData.map((bot) => new User(bot));
+  // console.log(botInitialData)
   const nanoIds = botInitialData.map((b) => b.nanoId);
 
   const bots = await findBots(nanoIds);
 
   if (bots.length) return bots;
 
-  return await Promise.all(botUserInstances);
+  const a =  botUserInstances.map(async instance => await instance.save());
+  console.log(a, " aaaa")
+  return a
 }
 
 async function addBotsToOnlineUsers(bots) {
-    sessionInstance.setUser(...bots)
+    bots.map(b => {sessionInstance.setUser(b)})
+   
 }
 
 async function findBots(nanoIds) {
@@ -44,14 +48,16 @@ function removeNanoidFromGroup(userInstancesArray) {
 
 export async function main() {
 
-  const availableBots = await createBots();
+  const availableBots = await Promise.all(await createBots());
+
   const avalibleBotWithBand = addBotBand(availableBots)
 
   const nanoIds = avalibleBotWithBand.map((b) => b.nanoId);
   const botsFound = await findBots(nanoIds);
-  
+
   botsActive.push(...botsFound)
   const bots = removeNanoidFromGroup(avalibleBotWithBand)
 
   addBotsToOnlineUsers(bots);
+ 
 }

@@ -8,9 +8,9 @@ export async function messageHandler(data, socket, io, sender, receiver, callbac
     let chat
     chat = await chatAlreadyExists(data)
 
-    console.log(sender.nanoId, " id que realizo la peticion")
-    console.log(data.msg, " url que se va a almacenar")
-    console.log("////////////////////")
+    // console.log(sender.nanoId, " id que realizo la peticion")
+    // console.log(data.msg, " url que se va a almacenar")
+    // console.log("////////////////////")
 
     if(chat) {
         const newMsg = await createMessage(data, sender, chat)

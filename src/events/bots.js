@@ -20,9 +20,16 @@ export async function bots(socket, io, userSession) {
         if(!receiver) return callback({status: false})   
         
         const botFound = findBot(data.receiver)
+
+        // console.log(botFound, " botfound")
+
+        if(!botFound) return callback({status: false})
+         
         const botResponse = botsResponses[botFound.nanoId]
 
-        const res = botResponse(data)
+        const res = await botResponse(data, io, socket)
+
+        if(!res) return 
 
         data = {
             receiver: receiver._id.toString(),
@@ -31,7 +38,7 @@ export async function bots(socket, io, userSession) {
         }
         
         
-        await messageHandler(data, socket, io, botFound, receiver, callback, true)
+        messageHandler(data, socket, io, botFound, receiver, callback, true)
     })
 
 
