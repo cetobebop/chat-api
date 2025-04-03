@@ -22,14 +22,21 @@ class ImagesControllers {
       const { sender, receiver } = req.body;
       const { file } = req;
 
+      if(!file) return res.status(404).json({
+        status: 'error',
+        msg: 'image empty'
+      })
+
       const urlServer = process.env.MY_SERVER_URL + `/public/${file.filename}`;
 
-      const msg = !process.env.PROD
+      let msg
+
+         msg = !process.env.PROD
         ? {
             secure_url: urlServer,
           }
         : await uploadImage(urlServer);
-
+    
       const errors = validateMessages({
         sender,
         receiver,
@@ -52,7 +59,7 @@ class ImagesControllers {
 
       emitterImageControllerToSocket.emit(
         "server-event-emitter:client-sent-image" + sender,
-        { sender, receiver, msg: msg.secure_url, isAMultimediaFile: true },
+        { sender, receiver, msg: msg?.secure_url, isAMultimediaFile: true },
         receiverUser
       );
 
